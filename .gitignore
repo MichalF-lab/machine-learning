@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Punkty kontrolne modeli
+*.pth
+*.pt
+*.ckpt
+
+# System
+.DS_Store
+Thumbs.db
