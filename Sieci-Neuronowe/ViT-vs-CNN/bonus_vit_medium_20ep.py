@@ -101,7 +101,7 @@ def run_vit_medium_20ep():
         "vs_10ep_cifar10": 68.75     # z poprzedniego runu
     }
 
-    with open("bonus.json", "w", encoding='utf-8') as f:
+    with open("wyniki_bonus_vit_medium_20ep.json", "w", encoding='utf-8') as f:
         json.dump(result, f, indent=4, ensure_ascii=False)
 
     print(f"\n{'='*55}")
@@ -111,7 +111,7 @@ def run_vit_medium_20ep():
           f"{'+'if result['best_test_acc'] > result['vs_10ep_imagenet'] else ''}"
           f"{result['best_test_acc'] - result['vs_10ep_imagenet']:.2f}%")
     print(f"Czas: {train_time:.1f}s  ({result['time_per_epoch']:.1f}s/epoka)")
-    print(f"Wyniki zapisane do: bonus.json")
+    print(f"Wyniki zapisane do: wyniki_bonus_vit_medium_20ep.json")
 
 
 if __name__ == "__main__":

@@ -6,7 +6,9 @@
 ## 📊 Zawartość Projektu
 
 ### Notebooki Jupyter
-1. **Grupa3_ViT_vs_CNN_Analiza.ipynb** - Główna analiza
+
+Wersje finalne (w katalogu głównym):
+1. **Grupa3_ViT_vs_CNN_FINAL.ipynb** - Główna analiza
    - Porównanie CNN vs ViT na CIFAR-10 (6 eksperymentów)
    - Porównanie CNN vs ViT na ImageNet (6 eksperymentów)
    - Wykresy: dokładność, czas treningu, liczba parametrów
@@ -14,18 +16,24 @@
    - Porównanie zbiorów danych
    - **Główne odkrycie:** ViT_Best osiąga 72.73% na CIFAR-10, CNN osiąga 72.04%
 
-2. **Bonus_150epochs_Analiza.ipynb** - Analiza rozszerzona
+2. **Bonus_150epochs_FINAL.ipynb** - Analiza rozszerzona
    - ViT z 150 epokami na CIFAR-10
    - **Wynik:** 81.0% dokładności!
    - Porównanie: 10 epok vs 150 epok
    - Milestones - postęp treningu
    - **Wniosek:** Długi trening wart dodatkowego czasu
 
+3. **Bonus_112x112_FINAL.ipynb** - Analiza dodatkowa na ImageNet w rozdzielczości 112x112
+
+Wcześniejsze wersje robocze (`Grupa3_ViT_vs_CNN_Analiza.ipynb`, `Grupa3_ViT_vs_CNN_Analiza_FIXED.ipynb`, `Bonus_150epochs_Analiza.ipynb`, `projekt4.ipynb`) są zachowane w [`notebooki/wersje-robocze/`](./notebooki/wersje-robocze) — pokazują etapy dochodzenia do wersji finalnej.
+
 ### Dane JSON
-- `porownanie_wynikow.json` - Główne wyniki (CIFAR-10 + ImageNet)
+- `porownanie_wynikow.json` - Główne wyniki (CIFAR-10 + ImageNet), generowane przez `porownanie.py` z `wyniki_eksperymentow.json` + `wyniki_eksperymentow_imagenet.json`
 - `long_training_vit_best_150ep.json` - Wyniki 150 epok
-- `bonus.json`, `bonus2.json` - Dodatkowe eksperymenty
+- `wyniki_bonus_vit_medium_20ep.json`, `wyniki_bonus2_vit_best_20ep.json` - Dodatkowe eksperymenty (ViT_Medium i ViT_Best, 20 epok na ImageNet)
 - `imagenet_112x112.json` - Dodatkowe wyniki ImageNet
+- `porownanie_wynikow_rerun2.json`, `porownanie_wynikow_rerun3.json` - alternatywne przebiegi `porownanie.py`, niewykorzystywane przez żaden notebook
+- `wyniki_eksperymentow_NX.json`, `wyniki_eksperymentow_num_heads.json`, `wyniki_eksperymentow_patch.json` - dodatkowe sweep'y hiperparametrów (liczba bloków, liczba głów uwagi, rozmiar patcha), eksportowane bezpośrednio z notatnika
 
 ---
 
@@ -47,8 +55,8 @@ cd ViT-vs-CNN
 jupyter notebook
 
 # Otwórz w przeglądarce:
-# - Grupa3_ViT_vs_CNN_Analiza.ipynb
-# - Bonus_150epochs_Analiza.ipynb
+# - Grupa3_ViT_vs_CNN_FINAL.ipynb
+# - Bonus_150epochs_FINAL.ipynb
 ```
 
 ### Opcja 2: W Dockerze
@@ -135,11 +143,13 @@ docker run -p 8888:8888 -v ${pwd}:/app vit-vs-cnn:latest
 
 ```
 ViT-vs-CNN/
-├── Grupa3_ViT_vs_CNN_Analiza.ipynb          # Główna analiza
-├── Bonus_150epochs_Analiza.ipynb             # Analiza bonusowa
+├── Grupa3_ViT_vs_CNN_FINAL.ipynb             # Główna analiza (finalna)
+├── Bonus_150epochs_FINAL.ipynb                # Analiza bonusowa (finalna)
+├── Bonus_112x112_FINAL.ipynb                  # Analiza bonusowa ImageNet 112x112 (finalna)
+├── notebooki/wersje-robocze/                 # Wcześniejsze wersje robocze notatników
 ├── porownanie_wynikow.json                   # Dane główne
 ├── long_training_vit_best_150ep.json         # Dane 150 epok
-├── bonus.json, bonus2.json                   # Dodatkowe dane
+├── wyniki_bonus_vit_medium_20ep.json, wyniki_bonus2_vit_best_20ep.json  # Dodatkowe dane
 ├── imagenet_112x112.json                     # Dane ImageNet
 ├── wykresy/                                  # Wykresy wynikowe (accuracy, loss, porównania)
 ├── notebooki-zespolu/                        # Indywidualne notatniki członków zespołu

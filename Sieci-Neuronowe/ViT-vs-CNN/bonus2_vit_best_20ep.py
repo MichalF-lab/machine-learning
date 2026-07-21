@@ -100,10 +100,10 @@ def run_vit_best_20ep():
         "history": history,
         "vs_10ep_imagenet": 66.52,   # z poprzedniego runu
         "vs_10ep_cifar10": 71.26,    # z poprzedniego runu
-        "vs_medium_20ep_imagenet": 66.62  # z bonus.json
+        "vs_medium_20ep_imagenet": 66.62  # z wyniki_bonus_vit_medium_20ep.json
     }
 
-    with open("bonus2.json", "w", encoding='utf-8') as f:
+    with open("wyniki_bonus2_vit_best_20ep.json", "w", encoding='utf-8') as f:
         json.dump(result, f, indent=4, ensure_ascii=False)
 
     print(f"\n{'='*55}")
@@ -116,7 +116,7 @@ def run_vit_best_20ep():
           f"{'+'if result['best_test_acc'] > result['vs_medium_20ep_imagenet'] else ''}"
           f"{result['best_test_acc'] - result['vs_medium_20ep_imagenet']:.2f}%")
     print(f"Czas: {train_time:.1f}s  ({result['time_per_epoch']:.1f}s/epoka)")
-    print(f"Wyniki zapisane do: bonus2.json")
+    print(f"Wyniki zapisane do: wyniki_bonus2_vit_best_20ep.json")
 
 
 if __name__ == "__main__":

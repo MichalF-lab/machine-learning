@@ -6,7 +6,7 @@ Rola: Osoba E – metryki, integracja wyników A–D, wykresy/tabele, wnioski, p
 
 - Tabela zbiorcza i heatmapa są wymagane w podziale ról, ale jeszcze nie istnieją jako pliki – do przygotowania.
 - `plots/` i `wyniki/plots/` mają te same 2 pliki shaping – w planie zostaje `wyniki/plots/` jako jedyne źródło.
-- `wyniki/plots/gamma|epsilon_decay/Eksperyment_*` oraz `wpływ hiperparametrów/*_comparison_variant_*` to dwa cięcia tych samych danych (po eksperymencie vs po wariancie) – wybrać jedno
+- `wyniki/plots/gamma|epsilon_decay/Eksperyment_*` oraz `wplyw_hiperparametrow/*_comparison_variant_*` to dwa cięcia tych samych danych (po eksperymencie vs po wariancie) – wybrać jedno
 - W `Eksperyment_1` i `Eksperyment_2` (epsilon_decay) są po 2 pliki (z i bez sufiksu `e_d_xxxx`) – sprawdzić, który jest aktualny.
 
 ## 1. Slajd tytułowy
@@ -53,7 +53,7 @@ Rola: Osoba E – metryki, integracja wyników A–D, wykresy/tabele, wnioski, p
 - Eksperyment_4
 - Eksperyment_5
 
-`wpływ hiperparametrów/`
+`wplyw_hiperparametrow/`
 - gamma_comparison_MountainCar-v0_variant_A
 - gamma_comparison_MountainCar-v0_variant_B
 - gamma_comparison_MountainCar-v0_variant_C
@@ -70,7 +70,7 @@ Rola: Osoba E – metryki, integracja wyników A–D, wykresy/tabele, wnioski, p
 - DQN_variant_A_..._E_MountainCar-v0_DQN_shaping.png
 - REINFORCE_variant_A_..._E_MountainCar-v0_REINFORCE_shaping.png
 
-`filmiki reward shaping i baseline/`
+`nagrania_reward_shaping_baseline/`
 - all_policies.png
 - best_variants_comparison.png
 - dqn_baseline.mp4

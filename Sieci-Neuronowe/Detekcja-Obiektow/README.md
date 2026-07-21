@@ -15,11 +15,11 @@ Po wstępnej wersji grupowej model Faster R-CNN i pipeline YOLO zostały dotreno
 
 | Folder | Zawartość |
 |---|---|
-| `YOLO/yolo/` | Model, funkcja straty i ewaluacja YOLO od podstaw + wykresy treningowe |
-| `SSD/SSD/` | Model i anchory SSD + wstęp teoretyczny (PDF) |
-| `Faster_R_CNN/Faster_R_CNN/` | Faster R-CNN od podstaw: anchory, propozycje, IoU, obliczanie strat i offsetów |
-| `drive_content/` | Wspólne pliki zespołu (loader danych, notatnik `Projekt2.ipynb`, wstęp do SSD) |
-| `loaders_content/loaders/` | Parsery datasetów (BCCD, BDD100K, VisDrone) + pobieranie danych |
+| `YOLO/` | Model, funkcja straty i ewaluacja YOLO od podstaw + wykresy treningowe |
+| `SSD/` | Model i anchory SSD + wstęp teoretyczny (PDF) |
+| `Faster_R_CNN/` | Faster R-CNN od podstaw: anchory, propozycje, IoU, obliczanie strat i offsetów (`faster_rcnn_eval_map.py` — ewaluacja przez `torchmetrics.MeanAveragePrecision`) |
+| `drive_content/` | Oryginalny zrzut z Google Colab/Drive (loader danych, notatnik `Projekt2.ipynb`, wstęp do SSD) — w większości zastąpiony przez zorganizowane foldery `Faster_R_CNN/`, `SSD/`, `YOLO/` powyżej, zostawiony dla historii |
+| `loaders_content/loaders/` | Parsery datasetów (BCCD, BDD100K, VisDrone) + pobieranie danych — używane przez kod w `drive_content/` (pipeline'y `*Train/` mają własne, samodzielne kopie loaderów) |
 | `FrcnnTrain/` | Dotrenowana wersja Faster R-CNN w Dockerze/GPU — osobne przebiegi na BCCD i VisDrone (`Runs/bccd`, `Runs/visdrone` — metryki, bez wag modelu) |
 | `YoloBccdTrain/` | YOLOv8n (Ultralytics) trenowany na BCCD w Dockerze/GPU — patrz [ReadMe](./YoloBccdTrain/ReadMe.md) |
 | `YoloVisDroneTrain/` | YOLOv8n trenowany na VisDrone2019-DET w Dockerze/GPU — patrz [ReadMe](./YoloVisDroneTrain/ReadMe.md) |
