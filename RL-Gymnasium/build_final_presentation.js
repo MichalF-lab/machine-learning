@@ -288,15 +288,15 @@ function heatmapSlide(label, colHeaders, rowsData, lo, hi, colW) {
 {
   const s = lightSlide("Reward shaping — polityki i porównanie wariantów");
   imageGrid(s, [
-    { src: p("filmiki reward shaping i baseline/all_policies.png"), label: "Wszystkie polityki" },
-    { src: p("filmiki reward shaping i baseline/best_variants_comparison.png"), label: "Najlepsze warianty" }
+    { src: p("nagrania_reward_shaping_baseline/all_policies.png"), label: "Wszystkie polityki" },
+    { src: p("nagrania_reward_shaping_baseline/best_variants_comparison.png"), label: "Najlepsze warianty" }
   ], { cols: 2, top: 1.3, areaH: 3.85 });
 }
 
 // ============================================================ 13–14. NAGRANIA
 {
   const s = lightSlide("Nagrania — baseline i warianty A–C (DQN)");
-  const dir = "filmiki reward shaping i baseline";
+  const dir = "nagrania_reward_shaping_baseline";
   videoGrid(s, [
     { src: p(dir, "dqn_baseline.mp4"), label: "Baseline" },
     { src: p(dir, "mountaincar_variant_dqn_A_best.mp4"), label: "Wariant A — best" },
@@ -306,7 +306,7 @@ function heatmapSlide(label, colHeaders, rowsData, lo, hi, colW) {
 }
 {
   const s = lightSlide("Nagrania — warianty D i E (DQN), best vs bad/worst");
-  const dir = "filmiki reward shaping i baseline";
+  const dir = "nagrania_reward_shaping_baseline";
   videoGrid(s, [
     { src: p(dir, "mountaincar_dqn_variant_D_best.mp4"), label: "Wariant D — best" },
     { src: p(dir, "mountaincar_dqn_variant_D_bad.mp4"), label: "Wariant D — bad" },
