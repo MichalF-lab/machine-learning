@@ -1,0 +1,86 @@
+================================================================================
+ANALIZA PORÓWNAWCZA: CNN vs Vision Transformer (ViT)
+Zbiory danych: CIFAR-10 | Imagenette2-320 (resize 32x32)
+================================================================================
+
+1. WYNIKI KOŃCOWE
+-----------------
+Model          | CIFAR-10  | ImageNet  | Różnica
+CNN 10ep       |   72.85%  |   62.37%  | +10.48% na korzyść CIFAR-10
+ViT_Best 10ep  |   70.47%  |   66.52%  |  +3.95% na korzyść CIFAR-10
+
+Zwycięzca CIFAR-10: CNN 10ep (72.85% vs 70.47% — przewaga +2.38%)
+Zwycięzca ImageNet: ViT_Best (66.52% vs 62.37% — przewaga +4.15%)
+
+
+2. ARCHITEKTURA — KLUCZOWE RÓŻNICE
+------------------------------------
+CNN (CifarCNN):
+  - 3 warstwy konwolucyjne (3x3) + 2 warstwy w pełni połączone
+  - Operuje lokalnie — każdy filtr widzi okno 3x3 pikseli
+  - Wbudowany inductive bias: lokalność i translacyjna niezmienniczość
+  - MaxPool redukuje przestrzeń: 32x32 → 16x16 → 8x8
+  - 4 293 194 parametrów
+
+ViT (Vision Transformer):
+  - Dzieli obraz na patche (tokeny), przetwarza je jako sekwencję
+  - Multi-Head Self-Attention: każdy token widzi WSZYSTKIE inne tokeny
+  - Brak założeń o lokalności — uczy się relacji globalnych
+  - patch_size=4 → 64 tokeny | patch_size=2 → 256 tokenów
+  - Zakres parametrów: 405k (Small) do 7.12M (Large)
+
+
+3. DLACZEGO CNN WYGRYWA NA CIFAR-10?
+--------------------------------------
+CIFAR-10 to małe obrazy 32x32 z prostymi obiektami (samolot, kot, samochód).
+CNN ma wbudowany bias przestrzenny — "wie" że piksele blisko siebie są ważne.
+ViT musi nauczyć się tych relacji od zera, co wymaga więcej danych i epok.
+Przy 10 epokach CNN jest po prostu bardziej efektywny na małych obrazach.
+
+
+4. DLACZEGO ViT WYGRYWA NA IMAGENET?
+--------------------------------------
+Imagenette zawiera bardziej zróżnicowane obrazy (różne tła, kąty, skale).
+ViT dzięki mechanizmowi attention wychwytuje globalne zależności w obrazie
+(np. relację między głową a ogonem kota), co CNN z małym polem recepcji robi
+gorzej. Im bardziej złożone dane, tym bardziej opłaca się pełna uwaga globalna.
+
+
+5. EFEKTYWNOŚĆ PARAMETRÓW
+--------------------------
+Model         | Parametry | CIFAR-10 acc/M  | ImageNet acc/M
+CNN 10ep      |  4.29M    |   16.99 %/M     |   14.54 %/M
+ViT_Small     |  0.41M    |   136.88 %/M    |   128.63 %/M  ← najbardziej efektywny
+ViT_Medium    |  4.75M    |   14.04 %/M     |   13.30 %/M
+ViT_Large     |  7.12M    |    9.48 %/M     |    8.89 %/M
+ViT_Best      |  4.75M    |   14.85 %/M     |   14.02 %/M
+
+ViT_Small (0.41M) ma najlepszy stosunek dokładności do rozmiaru modelu.
+ViT_Large mimo największej liczby parametrów nie jest najlepszy — overfitting
+przy krótkim treningu.
+
+
+6. KOSZT OBLICZENIOWY
+-----------------------
+CNN 10ep:     107.6s  (~10.8s/epoka)
+ViT_Medium:   233.7s  (~23.4s/epoka)   — 2x wolniejszy niż CNN
+ViT_Large:    346.1s  (~34.6s/epoka)   — 3x wolniejszy niż CNN
+ViT_Best:    1258.1s  (~125.8s/epoka)  — 12x wolniejszy niż CNN (256 tokenów!)
+
+patch_size=2 (ViT_Best) jest 12x droższy obliczeniowo niż CNN przy porównywalnej
+liczbie parametrów. Attention ma złożoność O(n²) względem liczby tokenów.
+
+
+7. WNIOSKI
+-----------
+a) Na małych, prostych obrazach (32x32) → CNN jest szybszy i dokładniejszy.
+b) Na złożonych danych (ImageNet) → ViT lepiej generalizuje (+4.15% vs CNN).
+c) Więcej epok pomaga ViT bardziej niż CNN:
+   ViT_Best 10ep: 66.52%  →  ViT_Best 20ep: 69.15% (+2.63%)
+   ViT_Medium 10ep: 63.16% → ViT_Medium 20ep: 66.62% (+3.46%)
+d) ViT_Best (patch_size=2) oferuje najlepszą dokładność kosztem czasu ~12x
+   dłuższego treningu — sensowny wybór tylko gdy czas nie jest ograniczeniem.
+e) Dla produkcji na małych obrazach: CNN wygrywa stosunek jakość/czas.
+   Dla złożonych zadań z dużą ilością danych: ViT jest właściwym wyborem.
+
+================================================================================

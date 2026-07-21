@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  jupyter:
+    build: .
+    container_name: vit-vs-cnn-analysis
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./:/app
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    command: jupyter notebook --ip=0.0.0.0 --allow-root --no-browser
+    stdin_open: true
+    tty: true

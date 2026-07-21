@@ -1,0 +1,146 @@
+[
+    {
+        "model": "ViT",
+        "experiment": "Nx",
+        "param_value": 3,
+        "test_acc": 63.45,
+        "train_acc": 60.854,
+        "train_time_s": 6604.795450687408,
+        "num_params": 602762,
+        "history": [
+            {
+                "epoch": 1,
+                "loss": 1.7778122742157763,
+                "train_acc": 34.0,
+                "test_acc": 44.14
+            },
+            {
+                "epoch": 2,
+                "loss": 1.506090593459966,
+                "train_acc": 45.33,
+                "test_acc": 49.91
+            },
+            {
+                "epoch": 3,
+                "loss": 1.3903338339017786,
+                "train_acc": 49.628,
+                "test_acc": 55.16
+            },
+            {
+                "epoch": 4,
+                "loss": 1.3134374245048483,
+                "train_acc": 52.722,
+                "test_acc": 56.7
+            },
+            {
+                "epoch": 5,
+                "loss": 1.2623219389439848,
+                "train_acc": 54.616,
+                "test_acc": 58.85
+            },
+            {
+                "epoch": 6,
+                "loss": 1.222635183797773,
+                "train_acc": 56.07,
+                "test_acc": 59.9
+            },
+            {
+                "epoch": 7,
+                "loss": 1.1871121111123457,
+                "train_acc": 57.182,
+                "test_acc": 59.99
+            },
+            {
+                "epoch": 8,
+                "loss": 1.1577297066483656,
+                "train_acc": 58.634,
+                "test_acc": 62.01
+            },
+            {
+                "epoch": 9,
+                "loss": 1.1288620405794714,
+                "train_acc": 59.662,
+                "test_acc": 62.53
+            },
+            {
+                "epoch": 10,
+                "loss": 1.0977886883194183,
+                "train_acc": 60.854,
+                "test_acc": 63.45
+            }
+        ],
+        "times_per_epoch": 660.4795450687409
+    },
+    {
+        "model": "ViT",
+        "experiment": "Nx",
+        "param_value": 9,
+        "test_acc": 67.17,
+        "train_acc": 64.554,
+        "train_time_s": 18972.27641224861,
+        "num_params": 1792394,
+        "history": [
+            {
+                "epoch": 1,
+                "loss": 1.816935430097458,
+                "train_acc": 32.184,
+                "test_acc": 43.7
+            },
+            {
+                "epoch": 2,
+                "loss": 1.4933314335620618,
+                "train_acc": 45.414,
+                "test_acc": 50.86
+            },
+            {
+                "epoch": 3,
+                "loss": 1.3519134460507756,
+                "train_acc": 50.936,
+                "test_acc": 54.39
+            },
+            {
+                "epoch": 4,
+                "loss": 1.2692660770147963,
+                "train_acc": 54.546,
+                "test_acc": 58.59
+            },
+            {
+                "epoch": 5,
+                "loss": 1.2041659251503323,
+                "train_acc": 56.638,
+                "test_acc": 61.95
+            },
+            {
+                "epoch": 6,
+                "loss": 1.1552416388031161,
+                "train_acc": 58.178,
+                "test_acc": 61.34
+            },
+            {
+                "epoch": 7,
+                "loss": 1.1022362155682595,
+                "train_acc": 60.498,
+                "test_acc": 62.86
+            },
+            {
+                "epoch": 8,
+                "loss": 1.0708467234735903,
+                "train_acc": 61.98,
+                "test_acc": 64.46
+            },
+            {
+                "epoch": 9,
+                "loss": 1.03911537861885,
+                "train_acc": 63.044,
+                "test_acc": 64.74
+            },
+            {
+                "epoch": 10,
+                "loss": 1.0004213673379414,
+                "train_acc": 64.554,
+                "test_acc": 67.17
+            }
+        ],
+        "times_per_epoch": 1897.2276412248611
+    }
+]
