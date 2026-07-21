@@ -17,8 +17,8 @@ Zbiór eksperymentów z uczenia maszynowego i głębokiego: sieci neuronowe impl
 | | `NNonGPU.py` | Sieć neuronowa z obliczeniami na GPU (CuPy) |
 | | `siec_neuronowa_mnist.py` | Ręczna implementacja sieci (klasy `neuron`, `siec`) trenowana na MNIST |
 | | `neuron_szkic.py` | Szkic implementacji pojedynczego neuronu |
-| `pytorch/` | `torch_cnn_przyklad.py`, `convolutionnetwork.py` | Konwolucyjne sieci neuronowe (PyTorch) na zbiorze CIFAR-10 |
-| | `siec_pytorch_test.py`, `deep_learning_pytorch.py` | Sieci neuronowe w PyTorch trenowane na MNIST |
+| `pytorch/` | `cifar10_siec_konwolucyjna_podstawowa.py`, `convolutionnetwork.py` | Konwolucyjne sieci neuronowe (PyTorch) na zbiorze CIFAR-10 |
+| | `siec_mnist_regresja_grzbietowa.py`, `deep_learning_pytorch.py` | Sieci neuronowe w PyTorch trenowane na MNIST (pierwsza z warstwą wyjściową dopasowaną regresją grzbietową) |
 | | `ucf101_cnn_lstm.py` | Model CNN-LSTM do klasyfikacji wideo na zbiorze UCF-101 |
 | `regresja/` | `LinearRegr.py`, `RidgeRegr.py` | Własne implementacje regresji liniowej i grzbietowej |
 | | `test_regresja_liniowa.py`, `test_regresja_grzbietowa.py` | Testy porównujące powyższe implementacje z `scikit-learn` |
