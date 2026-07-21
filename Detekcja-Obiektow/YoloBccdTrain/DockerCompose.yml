@@ -1,0 +1,36 @@
+services:
+  Train:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: yolobccdtrain:latest
+
+    # ── hyperparameters ─────────────────────────────────────────────────────
+    # BCCD is tiny (~360 images, ~7 MB). Training 100 epochs takes ~10-15 min.
+    # batch=16 makes sense for ~300 train imgs (gives ~19 batches per epoch);
+    # batch=32 would give only ~9 batches → too few gradient updates per epoch.
+    environment:
+      - EPOCHS=100        # plenty for a small dataset; early stopping handles excess
+      - BATCH=16          # 19 batches/epoch — good gradient update frequency
+      - IMGSZ=640
+      - DEVICE=0
+      - RESUME=false
+      - RUN_NAME=Train
+      - WORKERS=4         # small dataset = no need for many workers
+      - CACHE=ram         # 360 images at 640x640 ≈ 1.5 GB in RAM — totally fits
+
+    # ── persistent volumes ──────────────────────────────────────────────────
+    volumes:
+      - ./Datasets:/app/datasets  # BCCD download + converted YOLO labels
+      - ./Runs:/runs              # training outputs
+
+    shm_size: '4gb'
+
+    # ── GPU access ──────────────────────────────────────────────────────────
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

@@ -1,0 +1,40 @@
+services:
+  Train:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: yolovisdronetrain:latest
+
+    # ── hyperparameters — override here without touching TrainModel.py ──────
+    # VRAM at batch=16 → 6.71 GB / 16 GB | at batch=32 → ~10.7 GB / 16 GB (safe)
+    # Real bottleneck on Win/WSL2: bind-mount I/O. Fixed by staging dataset to
+    # /tmp ext4 inside container (see TrainModel.py stage_dataset()).
+    environment:
+      - EPOCHS=100        # set to 3 for a quick smoke-test
+      - BATCH=32          # 2× more GPU work per cycle
+      - IMGSZ=640
+      - DEVICE=0
+      - RESUME=false      # true = continue from /runs/Train/weights/last.pt
+      - RUN_NAME=Train
+      - WORKERS=8         # parallel DataLoader threads — only useful with fast fs
+      - CACHE=false       # NEVER use 'disk' on Win bind-mount (kills SSD)
+                          # 'ram' OK only if you have >24 GB free RAM
+
+    # ── persistent volumes ───────────────────────────────────────────────────
+    # ./Datasets mounted at /app/datasets (slow bind-mount, persistent).
+    # TrainModel.py copies dataset to /tmp/datasets (fast ext4) once per run.
+    volumes:
+      - ./Datasets:/app/datasets  # VisDrone download cache (avoid re-downloading)
+      - ./Runs:/runs              # training outputs: weights, plots, metrics
+
+    # ── shared memory for PyTorch DataLoader workers ─────────────────────────
+    shm_size: '8gb'
+
+    # ── GPU access (Docker Compose v2 / Docker Desktop) ──────────────────────
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

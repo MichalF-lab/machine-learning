@@ -1,0 +1,77 @@
+services:
+
+  # ── BCCD (blood cells: RBC / WBC / Platelets) ─────────────────────────────
+  # Dane: ./Datasets/bccd/{train,val,test}/{img,ann}/
+  # Uruchomienie: docker compose -f DockerCompose.yml up TrainBccd --build
+  TrainBccd:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: frcnntrain:latest
+
+    environment:
+      - MODE=bccd
+      - EPOCHS=500
+      - BATCH=8             # z AMP (FP16) ~3-4GB VRAM po unfreeze
+      - LR=7e-4             # ~sqrt(2) scaling z batch=4
+      - WORKERS=4
+      - USE_AMP=1
+      - MOMENTUM=0.9
+      - WEIGHT_DECAY=5e-4
+      - GRAD_CLIP=10
+      - EVAL_EVERY=1
+      - UNFREEZE_AT=3      # epoka, od której odmrażamy backbone
+      - MAX_TRAIN_HOURS=2.0
+
+    volumes:
+      - ./Datasets:/app/data    # BCCD → /app/data/bccd/
+      - ./Runs:/runs
+      - ./TorchCache:/root/.cache/torch    # cache wag ResNet50 między restartami
+
+    shm_size: '8gb'
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  # ── VisDrone (drone footage: 10 klas pojazdów/pieszych) ───────────────────
+  # Dane: ./Datasets/VisDrone/{train,val,test}/{images,annotations}/
+  # Uruchomienie: docker compose -f DockerCompose.yml up TrainVisDrone --build
+  TrainVisDrone:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: frcnntrain:latest
+
+    environment:
+      - MODE=visdrone
+      - EPOCHS=30
+      - BATCH=12            # z AMP (FP16) ~10-12GB VRAM po unfreeze
+      - LR=1.2e-3           # ~sqrt(2) scaling z batch=6 → 12
+      - WORKERS=6
+      - USE_AMP=1
+      - MOMENTUM=0.9
+      - WEIGHT_DECAY=5e-4
+      - GRAD_CLIP=10
+      - EVAL_EVERY=1
+      - UNFREEZE_AT=3
+      - MAX_TRAIN_HOURS=2.0
+
+    volumes:
+      - ./Datasets:/app/data    # VisDrone → /app/data/VisDrone/
+      - ./Runs:/runs
+      - ./TorchCache:/root/.cache/torch    # cache wag ResNet50 między restartami
+
+    shm_size: '8gb'
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
