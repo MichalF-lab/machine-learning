@@ -14,6 +14,7 @@ Repozytorium na projekty i eksperymenty z uczenia maszynowego, zachowujące peł
 | Folder | Zawartość |
 |---|---|
 | [`Uczenie_Maszynowe/`](./Uczenie_Maszynowe) | Sieci neuronowe implementowane od podstaw, wersje z akceleracją GPU, Monte Carlo Tree Search, klasyczne modele regresji — szczegóły w README podfolderu |
+| [`Sieci-Neuronowe/`](./Sieci-Neuronowe) | Trzy projekty semestralne: detekcja obiektów (YOLO/SSD/Faster R-CNN), ViT vs CNN na CIFAR-10/ImageNet, optymalizacja agenta RL w Gymnasium — szczegóły w README podfolderu |
 
 ## 🛠️ Technologie
 
