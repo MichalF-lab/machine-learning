@@ -1,0 +1,146 @@
+[
+    {
+        "model": "ViT",
+        "experiment": "patch_size",
+        "param_value": 4,
+        "test_acc": 65.59,
+        "train_acc": 63.358,
+        "train_time_s": 3681.0132071971893,
+        "num_params": 1197578,
+        "history": [
+            {
+                "epoch": 1,
+                "loss": 1.7943179476291626,
+                "train_acc": 33.126,
+                "test_acc": 46.44
+            },
+            {
+                "epoch": 2,
+                "loss": 1.4865784794473282,
+                "train_acc": 45.758,
+                "test_acc": 52.31
+            },
+            {
+                "epoch": 3,
+                "loss": 1.3561027702468131,
+                "train_acc": 50.882,
+                "test_acc": 54.46
+            },
+            {
+                "epoch": 4,
+                "loss": 1.2758179134725,
+                "train_acc": 54.008,
+                "test_acc": 58.31
+            },
+            {
+                "epoch": 5,
+                "loss": 1.214189500912376,
+                "train_acc": 56.298,
+                "test_acc": 60.44
+            },
+            {
+                "epoch": 6,
+                "loss": 1.1619604210109662,
+                "train_acc": 58.406,
+                "test_acc": 61.1
+            },
+            {
+                "epoch": 7,
+                "loss": 1.1211293040943877,
+                "train_acc": 59.86,
+                "test_acc": 63.6
+            },
+            {
+                "epoch": 8,
+                "loss": 1.0825606105882493,
+                "train_acc": 61.172,
+                "test_acc": 64.47
+            },
+            {
+                "epoch": 9,
+                "loss": 1.0490663051605225,
+                "train_acc": 62.486,
+                "test_acc": 65.24
+            },
+            {
+                "epoch": 10,
+                "loss": 1.0232787505744974,
+                "train_acc": 63.358,
+                "test_acc": 65.59
+            }
+        ],
+        "time_per_epoch": 368.10132071971896
+    },
+    {
+        "model": "ViT",
+        "experiment": "patch_size",
+        "param_value": 8,
+        "test_acc": 57.53,
+        "train_acc": 55.524,
+        "train_time_s": 991.5325260162354,
+        "num_params": 1216010,
+        "history": [
+            {
+                "epoch": 1,
+                "loss": 1.8287245044318001,
+                "train_acc": 32.262,
+                "test_acc": 39.5
+            },
+            {
+                "epoch": 2,
+                "loss": 1.6040029973934984,
+                "train_acc": 41.304,
+                "test_acc": 46.03
+            },
+            {
+                "epoch": 3,
+                "loss": 1.5019780434001133,
+                "train_acc": 45.138,
+                "test_acc": 48.56
+            },
+            {
+                "epoch": 4,
+                "loss": 1.4467558196133665,
+                "train_acc": 47.17,
+                "test_acc": 50.33
+            },
+            {
+                "epoch": 5,
+                "loss": 1.3907273730353626,
+                "train_acc": 49.576,
+                "test_acc": 52.15
+            },
+            {
+                "epoch": 6,
+                "loss": 1.3522533047229737,
+                "train_acc": 50.72,
+                "test_acc": 53.69
+            },
+            {
+                "epoch": 7,
+                "loss": 1.3167469190514607,
+                "train_acc": 52.41,
+                "test_acc": 53.23
+            },
+            {
+                "epoch": 8,
+                "loss": 1.2893890842147495,
+                "train_acc": 53.358,
+                "test_acc": 55.8
+            },
+            {
+                "epoch": 9,
+                "loss": 1.2617098611334097,
+                "train_acc": 54.226,
+                "test_acc": 56.49
+            },
+            {
+                "epoch": 10,
+                "loss": 1.2368208203474274,
+                "train_acc": 55.524,
+                "test_acc": 57.53
+            }
+        ],
+        "time_per_epoch": 99.15325260162354
+    }
+]

@@ -1,0 +1,7 @@
+data/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.ipynb
+wyniki_eksperymentow.json
+wyniki_eksperymentow.csv

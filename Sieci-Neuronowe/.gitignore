@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Node
+node_modules/
+
+# Surowe datasety (pobierane automatycznie skryptami setup)
+Datasets/
+data/
+dane/
+
+# Cache pobranych modeli
+TorchCache/
+
+# Duże checkpointy treningowe (FRCNN/YOLO per-epoka) — małe końcowe modele *.pt zostają
+weights/
+*.pth
+
+# System
+.DS_Store
+Thumbs.db

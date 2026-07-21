@@ -1,0 +1,11 @@
+services:
+  projekt3:
+    build: .
+    container_name: projekt3-mountaincar
+    runtime: nvidia
+    volumes:
+      - ./:/app
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    stdin_open: true
+    tty: true
